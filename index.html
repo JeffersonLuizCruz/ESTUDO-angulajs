@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html ng-app='AngularJS'>
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
 </head>
 
 <body ng-controller='AngularCtrl'>
 <header>
-   <h1>{{title1}}</h1>
-   <h1 ng-bind='title2'></h1> 
-    <table>
+   <h3>{{title1}}</h3>
+   <h4 ng-bind='title2'></h4>
+</header>
+<main class="container"> 
+    <div class="row">
+
+    </div>
+    <table class="striped">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -35,7 +41,7 @@
             </tr>
         </tbody>
     </table>
-</header>
+</main>
 
 
 
@@ -43,7 +49,8 @@
 
 
 
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script src="lib/angular/angular.min.js"></script>
     <script type="text/javascript">
         angular.module('AngularJS',[]).controller('AngularCtrl', function($scope){

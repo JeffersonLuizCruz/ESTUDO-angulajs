@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app='AngularJS'>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body ng-controller='AngularCtrl'>
+<header>
+   <h1>{{title1}}</h1>
+   <h1 ng-bind='title2'></h1> 
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+                <th>Nota-01</th>
+                <th>Nota-02</th>
+                <th>Nota-03</th>
+                <th>Média</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat='aluno in alunos'>
+                <td>{{aluno.name}}</td>
+                <td>{{aluno.idade}}</td>
+                <td>{{aluno.email}}</td>
+                <td>{{aluno.nota1}}</td>
+                <td>{{aluno.nota2}}</td>
+                <td>{{aluno.nota3}}</td>
+                <td>{{media(aluno)}}</td>
+            </tr>
+        </tbody>
+    </table>
+</header>
+
+
+
+
+
+
+
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('AngularJS',[]).controller('AngularCtrl', function($scope){
+            $scope.title1 = 'Estudando Angula JS';
+            $scope.title2 = 'Tabela com Angular';
+            $scope.alunos = [
+                {name: 'Hugo', idade: 25, email: 'hugo@mail.com', nota1: 60, nota2: 65, nota3: 69},
+                {name: 'Jeff', idade: 26, email: 'jeff@mail.com', nota1: 70, nota2: 75, nota3: 79},
+                {name: 'Luiz', idade: 27, email: 'luiz@mail.com', nota1: 80, nota2: 85, nota3: 89}
+            ];
+
+            $scope.media = function(aluno){
+                var result = (aluno.nota1 + aluno.nota2 + aluno.nota3) / 3;
+                return result.toFixed(2);
+            }
+
+        })
+    </script>
+</body>
+</html>

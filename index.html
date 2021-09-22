@@ -9,13 +9,16 @@
 </head>
 
 <body ng-controller='AngularCtrl'>
-<header>
+
+<header class="container">
    <h3>{{title1}}</h3>
    <h4 ng-bind='title2'></h4>
 </header>
 <main class="container"> 
     <div class="row">
-
+        <!-- Também pode ser usando assim o ng-model:-->
+        <!--<input type="text" ng-model='busca.name' placeholder="Busca">-->
+        <input type="text" ng-model='busca' placeholder="Busca">
     </div>
     <table class="striped">
         <thead>
@@ -30,14 +33,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat='aluno in alunos'>
+            <tr ng-repeat='aluno in alunos | filter : busca'>
                 <td>{{aluno.name}}</td>
                 <td>{{aluno.idade}}</td>
                 <td>{{aluno.email}}</td>
                 <td>{{aluno.nota1}}</td>
                 <td>{{aluno.nota2}}</td>
                 <td>{{aluno.nota3}}</td>
-                <td>{{media(aluno)}}</td>
+                <td>{{aluno.media}}</td>
             </tr>
         </tbody>
     </table>
@@ -62,10 +65,17 @@
                 {name: 'Luiz', idade: 27, email: 'luiz@mail.com', nota1: 80, nota2: 85, nota3: 89}
             ];
 
-            $scope.media = function(aluno){
-                var result = (aluno.nota1 + aluno.nota2 + aluno.nota3) / 3;
-                return result.toFixed(2);
+            var init = function(){
+                $scope.alunos.forEach(aluno => {
+                    aluno.media = media(aluno);
+                });
             }
+            var media = function(aluno){
+                let media = (aluno.nota1 + aluno.nota2 + aluno.nota3) / 3;
+                return media;
+            }
+
+            init();
 
         })
     </script>
